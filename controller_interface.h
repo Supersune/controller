@@ -9,5 +9,5 @@ virtual void starting();
 virtual void update();
 virtual void stopping();
 };
-virtual bool init(harware_interface *robotHW, ros::NodeHandle &nh);
+
 }
