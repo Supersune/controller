@@ -30,8 +30,7 @@ namespace my_controller_ns
         //---Perform a sinusoidal motion for joint shoulder_pan_joint
         double dpos = init_pos_ + 10 * sin(ros::Time::now().toSec());
         double cpos = joint_.getPosition();
-        joint_.setCommand( -10*(cpos-dpos)); //Apply command to the selected
-        joint
+        joint_.setCommand(-10*(cpos-dpos)); //Apply command to the selected joint
         //---
     }
 
@@ -41,7 +40,5 @@ namespace my_controller_ns
 }
 
 
-//Register the plugin: PLUGINLIB_EXPORT_CLASS(my_namespace::MyPlugin,
-base_class_namespace::PluginBaseClass)
-PLUGINLIB_EXPORT_CLASS(my_controller_ns::MyControllerClass,
-controller_interface::ControllerBase);
+//Register the plugin: PLUGINLIB_EXPORT_CLASS(my_namespace::MyPlugin, base_class_namespace::PluginBaseClass)
+PLUGINLIB_EXPORT_CLASS(my_controller_ns::MyControllerClass, controller_interface::ControllerBase);
