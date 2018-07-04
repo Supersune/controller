@@ -64,7 +64,7 @@ void serialEvent()
             {
                 Serial.print(motorSelect[i]);
             }
-            Serial.print(';');
+            Serial.print(SEP);
             for (int i=0; i<3; i++)
             {
                 Serial.print(motorAngle[i]);
