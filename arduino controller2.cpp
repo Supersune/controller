@@ -17,7 +17,7 @@ const int MaxChars = 4;
 char strValue[MaxChars+1];
 int index = 0;
 
-const motorCount = 5;
+const int motorCount = 5;
 int pwmPins [motorCount] = {3, 5, 6, 9, 10};
 Servo servos [motorCount] = {};
 
