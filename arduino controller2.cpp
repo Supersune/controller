@@ -3,8 +3,12 @@
 Servo myservo;
 
 const int BAUDRATE = 9600;
-const char STX = 0x02;
-const char ETX = 0x02;
+// Aruduino ide doesn't like STX and ETX, so a and b for testing
+const char STX = 'a';
+const char ETX = 'b';
+//const char STX = 0x02;
+//const char ETX = 0x02;
+const char SEP = ';';
 bool serialListen = false;
 
 bool motorAngleSelect = false;
@@ -17,8 +21,8 @@ const int MaxChars = 4;
 char strValue[MaxChars+1];
 int index = 0;
 
-const int motorCount = 5;
-int pwmPins [motorCount] = {3, 5, 6, 9, 10};
+const int motorCount = 6;
+int pwmPins [motorCount] = {3, 5, 6, 9, 10, 11};
 Servo servos [motorCount] = {};
 
 
@@ -27,7 +31,7 @@ void setup()
     Serial.begin(BAUDRATE);
     for (int i=0; i < motorCount; i++)
     {
-        servos[i].attach(pwmPins[i])
+        servos[i].attach(pwmPins[i]);
     }
 }
 void loop()
@@ -40,7 +44,7 @@ void serialEvent()
     {
         char ch = Serial.read();
         Serial.write(ch);  // TODO: Validation later?
-        Serial.print(ch);
+        //Serial.print(ch);
         if (ch == STX)
         {
             index = 0;
@@ -48,7 +52,7 @@ void serialEvent()
             serialListen = true;
             continue;
         }
-        else if (ch == ";")
+        else if (ch == SEP)
         {
             index = 0;
             motorAngleSelect = true;
@@ -56,9 +60,18 @@ void serialEvent()
         }
         else if (ch == ETX)
         {
+            for (int i=0; i<2; i++)
+            {
+                Serial.print(motorSelect[i]);
+            }
+            Serial.print(';');
+            for (int i=0; i<3; i++)
+            {
+                Serial.print(motorAngle[i]);
+            }
             serialListen = false;
 
-            servos[atoi(motorSelect)].write(atoi(motorAngle))
+            servos[atoi(motorSelect)].write(atoi(motorAngle));
 
             continue;
         }
@@ -74,35 +87,5 @@ void serialEvent()
                 motorAngle[index++] = ch;
             }
         }
-        //if(index < MaxChars && isDigit(ch))
-        //{
-        //    strValue[index++] = ch;
-        //}
-        /*
-        else
-        {
-            strValue[index] = 0;
-            newAngle = atoi(strValue);
-            if (newAngle >= 0 && newAngle <= 180)
-            {
-                if (newAngle < angle)
-                {
-                    for(; angle > newAngle; angle -= 1)
-                    {
-                        myservo.write(angle);
-                    }
-                }
-                else
-                {
-                    for(; angle < newAngle; angle += 1)
-                    {
-                        myservo.write(angle);
-                    }
-                }
-            }
-            index = 0;
-            angle = newAngle;
-        }
-        */
     }
 }
