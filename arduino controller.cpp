@@ -12,9 +12,9 @@ int index = 0;
 
 void setup()
 {
- Serial.begin(9600);
- myservo.attach(10);
- angle = 90;
+    Serial.begin(9600);
+    myservo.attach(10);
+    angle = 90;
 }
 void loop()
 {
@@ -40,7 +40,7 @@ void serialEvent()
                     for(; angle > newAngle; angle -= 1)
                     {
                         myservo.write(angle);
-                    }  
+                    }
                     else
                     {
                         for(; angle < newAngle; angle += 1)
