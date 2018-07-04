@@ -34,7 +34,7 @@ void serialEvent()
         {
             strValue[index] = 0;
             newAngle = atoi(strValue);
-            if (newAngle > 0 && newAngle < 180)
+            if (newAngle >= 0 && newAngle <= 180)
             {
                 if (newAngle < angle)
                 {
