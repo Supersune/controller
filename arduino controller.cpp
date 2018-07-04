@@ -26,7 +26,8 @@ void serialEvent()
     {
         char ch = Serial.read();
         Serial.write(ch);
-        if(index < MaxChars && isDigit(ch)) {
+        if(index < MaxChars && isDigit(ch))
+        {
             strValue[index++] = ch;
         }
         else
@@ -41,12 +42,12 @@ void serialEvent()
                     {
                         myservo.write(angle);
                     }
-                    else
+                }
+                else
+                {
+                    for(; angle < newAngle; angle += 1)
                     {
-                        for(; angle < newAngle; angle += 1)
-                        {
-                            myservo.write(angle);
-                        }
+                        myservo.write(angle);
                     }
                 }
             }
