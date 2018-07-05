@@ -1,5 +1,5 @@
 <launch>
-	<arg name="oneArm" />
+	<arg name="model" />
 	<arg name="gui" default="False" />
 	<param name="robot_description" textfile="arm2.urdf" />
 	<param name="use_gui" value="$(arg gui)"/>
