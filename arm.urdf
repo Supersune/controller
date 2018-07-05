@@ -13,23 +13,10 @@
 	</link>
 	<link name="link1" />
 
-<<<<<<< HEAD
-    <joint name="joint1" type="revolute">
-        <parent link="base_link" />
-        <child link="link1" />
-        <origin xyz="0 0 0.1" />
-        <axis xyz="0 0 1" />
-				<limit effort="100" velocity="1.0" />
-    </joint>
-
-		<link name="link1">
-
-=======
 	<joint name="joint1" type="revolute">
 		<parent link="base_link" />
 		<child link="link1" />
 		<origin xyz="0 0 0.1" />
 		<axis xyz="0 0 1" />
 	</joint>
->>>>>>> 99b75c8c407083f98c219cc57b78b01c30289080
 </robot>
