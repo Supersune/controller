@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot name="oneArm">
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<cylinder length="0.05" radius="0.05" />
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<material name="yellow">
+				<color rgba="1 1 0 1" />
+			</material>
+		</visual>
+	</link>
+
+	<link name="link1">
+		<visual>
+			<geometry>
+				<cylinder length="0.15" radius="0.01" />
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<material name="yellow">
+				<color rgba="1 1 0 1" />
+			</material>
+		</visual>
+	</link>
+
+	<link name="link2">
+		<visual>
+			<geometry>
+				<cylinder length="0.15" radius="0.01" />
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<material name="yellow">
+				<color rgba="1 1 0 1" />
+			</material>
+		</visual>
+	</link>
+
+	<link name="link3">
+		<visual>
+			<geometry>
+				<cylinder length="0.02" radius="0.02" />
+			</geometry>
+			<origin rpy="0 0 0" xyz="0 0 0" />
+			<material name="yellow">
+				<color rgba="1 1 0 1" />
+			</material>
+		</visual>
+	</link>
+
+
+	<joint name="joint1" type="revolute">
+		<parent link="base_link" />
+		<child link="link1" />
+		<origin xyz="0 0 0.05" />
+		<axis xyz="0 0 1" />
+	</joint>
+
+	<joint name="joint2" type="revolute">
+		<parent link="link1" />
+		<child link="link2" />
+		<origin xyz="0 0 0.15" />
+		<axis xyz="0 0 1" />
+	</joint>
+
+	<joint name="joint3" type="revolute">
+		<parent link="link2" />
+		<child link="link3" />
+		<origin xyz="0 0 0.15" />
+		<axis xyz="0 0 1" />
+	</joint>
+</robot>
