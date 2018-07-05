@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <robot name"oneArm">
   <link name="base_link">
-  <visual>
     <visual>
       <geometry>
       <cylinder length="0.1" radius"0.05"/>
@@ -18,4 +17,4 @@
     <origin xyz="0 0 0.1"/>
     <axis xyz="0 0 1"/>
   </joint>
-  
+</robot>
